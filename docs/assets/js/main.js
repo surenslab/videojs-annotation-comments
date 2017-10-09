@@ -48,12 +48,12 @@
             for(var i = 0; i <= arguments.length; i++) {
                 output = output + " " + JSON.stringify(arguments[i]);
             };
+
             // Remove extra quotes and any undefined
-            // TODO: combine this shit into a regexp
-            output = output.replace("\"", "");
-            output = output.replace("\"", "");
+            output = output.replace(/\"/g, "").trim();
             output = output.replace("undefined", "");
             output = ">> " + output;
+
             var $p = $("<p/>").text(output);
             $console.append($p);
             $console.scrollTop($console[0].scrollHeight)
